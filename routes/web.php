@@ -16,31 +16,51 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('beranda');
 });
+
+Route::prefix('video')->group(function () {
+    Route::get('/{type}', function () {
+        return view('video.index');
+    });
+    Route::get('/detail/{id}', function () {
+        return view('video.detail');
+    });
+});
+
 Route::get('/login', function () {
     return view('login');
+});
+Route::get('/register', function () {
+    return view('register');
 });
 Route::get('/profile', function () {
     return view('profile');
 });
-Route::get('/laporan', function () {
-    return view('laporan');
-});
 
-
-Route::prefix('user-setting')->group(function () {
+Route::prefix('admin')->group(function () {
     Route::get('/', function () {
-        return view('user-setting.index');
+        return view('admin.beranda');
     });
-    Route::get('/add', function () {
-        return view('user-setting.add');
+    Route::get('/laporan', function () {
+        return view('admin.laporan');
     });
-});
 
-Route::prefix('video-setting')->group(function () {
-    Route::get('/', function () {
-        return view('video-setting.index');
+
+    Route::prefix('user-setting')->group(function () {
+        Route::get('/', function () {
+            return view('admin.user-setting.index');
+        });
+        Route::get('/add', function () {
+            return view('admin.user-setting.add');
+        });
     });
-    Route::get('/add', function () {
-        return view('video-setting.add');
+
+    Route::prefix('video-setting')->group(function () {
+        Route::get('/', function () {
+            return view('admin.video-setting.index');
+        });
+        Route::get('/add', function () {
+            return view('admin.video-setting.add');
+        });
     });
+
 });

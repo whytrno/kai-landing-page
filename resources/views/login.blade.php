@@ -11,6 +11,10 @@
                     <input type="password" name="" placeholder="Masukkan password" class="py-2 px-4 rounded-lg w-full text-black">
                     <a href="/profile" class="block w-min whitespace-nowrap rounded-lg bg-[#D76513] py-1 px-6">Masuk</a>
                 </form>
+                <div class="flex gap-1 text-sm">
+                    <p class="text-white">Belum Memiliki Akun ?</p>
+                    <a href="/register" class="text-orange-800">Sign Up !</a>
+                </div>
             </div>
         </div>
     </div>

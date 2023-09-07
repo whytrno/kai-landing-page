@@ -8,7 +8,7 @@
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
-@include('includes.admin-navbar')
+@include('includes.user-navbar')
 @yield('content')
 
 @if(Request::path() != '/')

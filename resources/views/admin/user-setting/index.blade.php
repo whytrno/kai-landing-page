@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="px-10 pb-10 space-y-5">
-                    <div class="flex justify-between">
+                    <div class="flex justify-betwe`en">
                         <a href="/user-setting/add" class="font-semibold px-8 py-2 rounded-lg bg-[#277ACD] text-white">Tambah Data</a>
                         <form action="">
                             <label for="">Search:</label>
