@@ -1,8 +1,7 @@
 @extends('includes.main')
 
 @section('content')
-
-    <div class="bg-[url('{{asset('images/bg2.png')}}')]">
+    <div class="bg-[url('{{ asset('images/bg2.png') }}')] bg-cover">
         <div class="py-5 px-10 space-y-10">
             <h1 class="font-bold text-2xl">User Setting</h1>
             <div class="space-y-5 bg-white rounded-t-lg">

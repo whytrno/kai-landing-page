@@ -1,8 +1,7 @@
 @extends('includes.user-main')
 
 @section('content')
-
-    <div class="bg-[url('{{asset('images/bg-user.png')}}')] h-screen text-white">
+    <div class="bg-[url('{{ asset('images/bg-user.png') }}')] bg-cover h-screen text-white">
         <div class="flex justify-center items-center h-full">
             <div class="space-y-2 w-3/5 text-center">
                 <h3 class="font-bold text-xl">SELAMAT DATANG DI LAYANAN INFORMASI</h3>
@@ -14,5 +13,4 @@
             </div>
         </div>
     </div>
-
 @endsection
