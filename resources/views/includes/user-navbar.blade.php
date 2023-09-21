@@ -17,7 +17,11 @@
                     </svg>
                 </button>
             </div>
-            <a href="/login" class="{{Request::path() == 'profile' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]'}}">Profil</a>
+            @if(auth()->user())
+                <a href="/profile" class="{{Request::path() == 'profile' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]'}}">Profil</a>
+            @else
+                <a href="/login" class="{{Request::path() == 'profile' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]'}}">Login</a>
+            @endif
         </div>
     </div>
 

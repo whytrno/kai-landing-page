@@ -4,11 +4,15 @@
     <div class="bg-[url('{{ asset('images/bg2.png') }}')] bg-cover h-screen text-white">
         <div class="flex justify-center px-10 items-center h-full">
             <div class="py-10 px-14 bg-[#152A75] w-1/3 rounded-lg space-y-2">
-                <form action="" class="space-y-4">
+                @if(session('success'))
+                    <p class="text-blue-700 text-center">{{session('success')}}</p>
+                @endif
+                <form action="{{route('profile.update')}}" method="POST" class="space-y-4">
+                    @csrf
                     <div>
                         <p class="font-semibold">Nama</p>
                         <div class="flex items-center border-b border-white justify-between">
-                            <input type="text" value="Indah" class="bg-transparent w-full" disabled>
+                            <input type="text" name="nama" value="{{auth()->user()->nama}}" class="bg-transparent w-full" disabled>
                             <button onclick="toggleEditProfile()" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -21,7 +25,7 @@
                     <div>
                         <p class="font-semibold">Nomor Pegawai</p>
                         <div class="flex items-center border-b border-white justify-between">
-                            <input type="text" value="1020345" class="bg-transparent w-full" disabled>
+                            <input type="text" name="id_pegawai" value="{{auth()->user()->id_pegawai}}" class="bg-transparent w-full" disabled>
                             <button onclick="toggleEditProfile()" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -31,7 +35,7 @@
                             </button>
                         </div>
                     </div>
-                    <a id="logout" href="/"
+                    <a id="logout" href="{{route('logout')}}"
                         class="block text-center w-full whitespace-nowrap rounded-lg bg-[#D76513] py-1">Log Out</a>
                     <button id="submit" type="submit"
                         class="hidden block text-center w-full whitespace-nowrap rounded-lg bg-[#D76513] py-1">Simpan</button>
