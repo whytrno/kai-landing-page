@@ -20,14 +20,6 @@ Route::get('/', function () {
     return view('beranda');
 })->name('beranda');
 
-Route::prefix('video')->group(function () {
-    Route::get('/{type}', function () {
-        return view('video.index');
-    });
-    Route::get('/{type}', [MainController::class, 'videoIndex'])->name('video.index');
-    Route::get('/detail/{id}', [MainController::class, 'videoDetail'])->name('video.detail');
-});
-
 Route::get('/login', function () {
     return view('login');
 })->name('login');
@@ -37,6 +29,47 @@ Route::get('/register', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+
+    Route::prefix('video')->group(function () {
+        Route::get('/{type}', function () {
+            return view('video.index');
+        });
+        Route::get('/{type}', [MainController::class, 'videoIndex'])->name('video.index');
+        Route::get('/detail/{id}', [MainController::class, 'videoDetail'])->name('video.detail');
+    });
+
+    Route::prefix('admin')->group(function () {
+        Route::get('/', function () {
+            return view('admin.beranda');
+        });
+        Route::get('/laporan', function () {
+            return view('admin.laporan');
+        });
+
+        Route::prefix('user-setting')->group(function () {
+            Route::get('/', [UserController::class, 'index'])->name('user-setting.index');
+            Route::get('/add', function () {
+                return view('admin.user-setting.add');
+            });
+            Route::post('/', [UserController::class, 'store'])->name('user-setting.store');
+            Route::post('/search', [UserController::class, 'search'])->name('user-setting.search');
+            Route::post('/{id}', [UserController::class, 'update'])->name('user-setting.update');
+            Route::delete('/{id}', [UserController::class, 'destroy'])->name('user-setting.destroy');
+        });
+
+        Route::prefix('video-setting')->group(function () {
+            Route::get('/', [VideoController::class, 'index'])->name('video-setting.index');
+            Route::get('/add', function () {
+                return view('admin.video-setting.add');
+            });
+            Route::post('/', [VideoController::class, 'store'])->name('video-setting.store');
+            Route::post('/search', [VideoController::class, 'search'])->name('video-setting.search');
+            Route::post('/{id}', [VideoController::class, 'update'])->name('video-setting.update');
+            Route::delete('/{id}', [VideoController::class, 'destroy'])->name('video-setting.destroy');
+        });
+
+    });
+
     Route::get('/profile', function () {
         return view('profile');
     })->name('profile');
@@ -46,36 +79,4 @@ Route::middleware(['auth'])->group(function () {
         auth()->logout();
         return redirect()->route('login');
     })->name('logout');
-});
-
-Route::prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin.beranda');
-    });
-    Route::get('/laporan', function () {
-        return view('admin.laporan');
-    });
-
-    Route::prefix('user-setting')->group(function () {
-        Route::get('/', [UserController::class, 'index'])->name('user-setting.index');
-        Route::get('/add', function () {
-            return view('admin.user-setting.add');
-        });
-        Route::post('/', [UserController::class, 'store'])->name('user-setting.store');
-        Route::post('/search', [UserController::class, 'search'])->name('user-setting.search');
-        Route::post('/{id}', [UserController::class, 'update'])->name('user-setting.update');
-        Route::delete('/{id}', [UserController::class, 'destroy'])->name('user-setting.destroy');
-    });
-
-    Route::prefix('video-setting')->group(function () {
-        Route::get('/', [VideoController::class, 'index'])->name('video-setting.index');
-        Route::get('/add', function () {
-            return view('admin.video-setting.add');
-        });
-        Route::post('/', [VideoController::class, 'store'])->name('video-setting.store');
-        Route::post('/search', [VideoController::class, 'search'])->name('video-setting.search');
-        Route::post('/{id}', [VideoController::class, 'update'])->name('video-setting.update');
-        Route::delete('/{id}', [VideoController::class, 'destroy'])->name('video-setting.destroy');
-    });
-
 });
