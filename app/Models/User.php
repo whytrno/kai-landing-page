@@ -12,6 +12,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function watchedVideos()
+    {
+        return $this->belongsToMany(Video::class, 'user_videos', 'user_id', 'video_id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
