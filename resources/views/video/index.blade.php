@@ -5,7 +5,7 @@
         @foreach ($data as $d)
             <a href="{{ route('video.detail', $d->id) }}" class="space-y-1">
                 <video src="{{ asset('videos/' . $d->nama) }}" class="rounded-xl h-40 w-full object-cover"></video>
-                <p class="font-semibold break-words">{{ $d->nama }}</p>
+                <p class="font-semibold break-words">{{ $d->judul }}</p>
             </a>
         @endforeach
     </div>

@@ -21,7 +21,8 @@
                     </button>
                 </div>
                 <a href="/profile"
-                    class="{{ Request::path() == 'profile' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]' }}">Profil</a>
+                    class="{{ Request::path() == 'profile' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]' }}">Hallo,
+                    {{ auth()->user()->nama }}</a>
             @else
                 <a href="/login"
                     class="{{ Request::path() == 'profile' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]' }}">Login</a>

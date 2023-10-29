@@ -13,6 +13,8 @@ return new class extends Migration {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('judul');
+            $table->text('keterangan');
             $table->enum('category', ['pelayanan', 'keamanan', 'kebersihan']);
             $table->timestamps();
         });

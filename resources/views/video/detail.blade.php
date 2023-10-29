@@ -9,10 +9,10 @@
                 <video controls src="{{ asset('videos/' . $data->nama) }}" alt=""
                     class="rounded-xl h-96 w-full object-cover"></video>
                 <div class="px-5 space-y-1">
-                    <h1 class="font-semibold">{{ $data->nama }}</h1>
-                    <p>Vidio ini digunakan sebagai edukasi pegawai mengenai {{ $data->category }} gerbong kereta</p>
+                    <h1 class="font-semibold">{{ $data->judul }}</h1>
+                    <p>{{ $data->keterangan }}</p>
                     <div class="flex gap-10">
-                        <p>290 x ditonton</p>
+                        <p>{{ $totalVideoWatched }} x ditonton</p>
                         <p>diunggah {{ $data->created_at->format('d F Y') }}</p>
                     </div>
                 </div>

@@ -31,12 +31,16 @@
                             <tr>
                                 <th class="border border-[#277ACD]">No</th>
                                 <th class="border border-[#277ACD]">Nama Video</th>
+                                <th class="border border-[#277ACD]">Judul Video</th>
+                                <th class="border border-[#277ACD]">Keterangan Video</th>
                                 <th class="border border-[#277ACD]">Aksi</th>
                             </tr>
                             @foreach ($data as $d)
                                 <tr class="text-center">
                                     <td class="border border-[#277ACD]">{{ $loop->iteration }}</td>
                                     <td class="border border-[#277ACD]">{{ $d->nama }}</td>
+                                    <td class="border border-[#277ACD]">{{ $d->judul }}</td>
+                                    <td class="border border-[#277ACD]">{{ $d->keterangan }}</td>
                                     <td class="border border-[#277ACD]">
                                         <div class=" flex gap-3 justify-center items-center">
                                             <button onclick="toggleEditModal({{ $d->id }})">
@@ -77,6 +81,18 @@
                                             class="space-y-10" enctype="multipart/form-data">
                                             @csrf
                                             <div class="space-y-2 col-span-2">
+                                                <p>Judul:</p>
+                                                <input type="text"
+                                                    class="w-full cursor-pointer py-3 px-5 border rounded-lg"
+                                                    name="judul">
+                                            </div>
+                                            <div class="space-y-2 col-span-2">
+                                                <p>Keterangan:</p>
+                                                <input type="text"
+                                                    class="w-full cursor-pointer py-3 px-5 border rounded-lg"
+                                                    name="Keterangan">
+                                            </div>
+                                            <div class="space-y-2 col-span-2">
                                                 <p>Pilih Kategori:</p>
                                                 <select name="category"
                                                     class="w-full cursor-pointer py-3 px-5 border rounded-lg">
@@ -95,7 +111,8 @@
                                                             d="M10.5 3.75a6 6 0 00-5.98 6.496A5.25 5.25 0 006.75 20.25H18a4.5 4.5 0 002.206-8.423 3.75 3.75 0 00-4.133-4.303A6.001 6.001 0 0010.5 3.75zm2.03 5.47a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72v4.94a.75.75 0 001.5 0v-4.94l1.72 1.72a.75.75 0 101.06-1.06l-3-3z"
                                                             clip-rule="evenodd" />
                                                     </svg>
-                                                    <p id="file-name2" class="font-semibold text-center">Lampirkan file Anda
+                                                    <p id="file-name2" class="font-semibold text-center">Lampirkan file
+                                                        Anda
                                                         di sini <br> atau <br>
                                                         Jelajahi file</p>
                                                 </div>
@@ -146,6 +163,14 @@
             <form action="{{ route('video-setting.store') }}" method="POST" class="space-y-10"
                 enctype="multipart/form-data">
                 @csrf
+                <div class="space-y-2 col-span-2">
+                    <p>Judul:</p>
+                    <input type="text" class="w-full cursor-pointer py-3 px-5 border rounded-lg" name="judul">
+                </div>
+                <div class="space-y-2 col-span-2">
+                    <p>Keterangan:</p>
+                    <input type="text" class="w-full cursor-pointer py-3 px-5 border rounded-lg" name="keterangan">
+                </div>
                 <div class="space-y-2 col-span-2">
                     <p>Pilih Kategori:</p>
                     <select name="category" class="w-full cursor-pointer py-3 px-5 border rounded-lg">

@@ -23,6 +23,8 @@ class VideoController extends Controller
 
         Video::create([
             'nama' => $nama_file,
+            'judul' => $request->judul,
+            'keterangan' => $request->keterangan,
             'category' => $request->category,
         ]);
 
@@ -43,6 +45,8 @@ class VideoController extends Controller
 
         $data->update([
             'nama' => $nama_file,
+            'judul' => $request->judul,
+            'keterangan' => $request->keterangan,
             'category' => $request->category,
         ]);
 

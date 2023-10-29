@@ -5,16 +5,19 @@
         </div>
         <div class="gap-5 flex">
             <a href="/" class="{{ Request::path() == '/' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]' }}">Beranda</a>
-            <a href="/admin/laporan"
-                class="{{ Request::path() == 'lapangan' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]' }}">Laporan</a>
-            <div>
-                <button onclick="togglePengaturanModal()"
-                    class="{{ Request::path() == 'pengaturan' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]' }}">Pengaturan</button>
-            </div>
-            @if(auth()->user())
-                <a href="/profile" class="{{Request::path() == 'profile' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]'}}">Profil</a>
+            @if (auth()->user())
+                <a href="{{ route('laporan.index') }}"
+                    class="{{ Request::path() == 'lapangan' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]' }}">Laporan</a>
+                <div>
+                    <button onclick="togglePengaturanModal()"
+                        class="{{ Request::path() == 'pengaturan' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]' }}">Pengaturan</button>
+                </div>
+                <a href="/profile"
+                    class="{{ Request::path() == 'profile' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]' }}">Hallo,
+                    {{ auth()->user()->nama }}</a>
             @else
-                <a href="/login" class="{{Request::path() == 'profile' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]'}}">Login</a>
+                <a href="/login"
+                    class="{{ Request::path() == 'profile' ? 'text-[#C95C0D]' : 'hover:text-[#C95C0D]' }}">Login</a>
             @endif
         </div>
     </div>

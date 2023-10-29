@@ -30,6 +30,8 @@ class MainController extends Controller
             ]);
         }
 
+        $totalVideoWatched = UserVideo::where('video_id', $data->id)->count();
+
         $user = User::where('id', auth()->user()->id)->with('watchedVideos')->first();
         $watchedVideos = [];
 
@@ -37,7 +39,7 @@ class MainController extends Controller
             $watchedVideos[] = $video->id;
         }
 
-        return view('video.detail', compact('data', 'latestVideo', 'watchedVideos'));
+        return view('video.detail', compact('data', 'latestVideo', 'watchedVideos', 'totalVideoWatched'));
     }
 
     public function store(Request $request)
@@ -58,16 +60,19 @@ class MainController extends Controller
         $user = User::where('username', $request->input('username'))->first();
 
         if (!$user) {
-            return back()->with('error', 'Email atau password salah')->withInput();
+            return back()->with('failed', 'Email atau password salah')->withInput();
         }
 
         $credentials = $request->only('username', 'password');
 
         if (auth()->attempt($credentials)) {
-            return redirect()->route('profile');
+            return back()->with('success', 'Email atau password salah')->withInput();
+
+            // return redirect()->route('profile');
         }
 
-        return back()->with('error', 'Email atau password salah')->withInput();
+        session()->flash('failed', 'Login berhasil!');
+        // return back()->with('error', 'Email atau password salah')->withInput();
     }
 
     public function updateProfile(Request $request)

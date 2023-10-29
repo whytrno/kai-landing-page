@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
@@ -22,11 +23,12 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('login');
-})->name('login');
+});
 Route::post('/login', [MainController::class, 'login'])->name('login');
 Route::get('/register', function () {
     return view('register');
 });
+Route::post('/', [UserController::class, 'store'])->name('user-setting.store');
 
 Route::middleware(['auth'])->group(function () {
 
@@ -42,17 +44,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', function () {
             return view('admin.beranda');
         });
-        Route::get('/laporan', function () {
-            return view('admin.laporan');
-        });
+        Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
 
         Route::prefix('user-setting')->group(function () {
             Route::get('/', [UserController::class, 'index'])->name('user-setting.index');
             Route::get('/add', function () {
                 return view('admin.user-setting.add');
             });
-            Route::post('/', [UserController::class, 'store'])->name('user-setting.store');
-            Route::post('/search', [UserController::class, 'search'])->name('user-setting.search');
+
+            Route::post('/search', [UserController::class, 'search'])->name('user.setting.search');
             Route::post('/{id}', [UserController::class, 'update'])->name('user-setting.update');
             Route::delete('/{id}', [UserController::class, 'destroy'])->name('user-setting.destroy');
         });
