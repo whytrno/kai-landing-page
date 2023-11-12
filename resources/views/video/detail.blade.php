@@ -1,4 +1,4 @@
-@extends('includes.user-main')
+@extends('includes.main')
 
 @section('content')
     <div class="bg-white p-10 space-y-5">

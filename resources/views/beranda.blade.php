@@ -1,4 +1,4 @@
-@extends('includes.user-main')
+@extends('includes.main')
 
 @section('content')
     <div class="bg-[url('{{ asset('images/bg-user.png') }}')] bg-cover h-screen text-white">

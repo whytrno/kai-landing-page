@@ -27,6 +27,7 @@ class UserFactory extends Factory
 
             'nama' => 'admin',
             'username' => 'admin',
+            'role' => 'admin',
             'id_pegawai' => 00000,
             'kedudukan' => 'admin',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
