@@ -10,7 +10,14 @@
 </head>
 
 <body>
-    @include('includes.navbar')
+    @if (isset(auth()->user()->role) && auth()->user()->role === 'admin')
+        @include('includes.admin-navbar')
+    @elseif(isset(auth()->user()->role) && auth()->user()->role === 'user')
+        @include('includes.navbar')
+    @else
+        @include('includes.navbar')
+    @endif
+
     @yield('content')
 
     @if (Request::path() != '/')

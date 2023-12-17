@@ -59,9 +59,9 @@
 
     <div id="pengaturanModal"
         class="hidden font-bold rounded-b-lg text-white flex flex-col gap-2 py-4 px-8 bg-[#152A75] w-min whitespace-nowrap float-right absolute right-0 top-18">
-        <a href="/admin/video-setting" class="hover:text-[#C95C0D]">Pelayanan</a>
-        <a href="/admin/video-setting" class="hover:text-[#C95C0D]">Keamanan</a>
-        <a href="/admin/video-setting" class="hover:text-[#C95C0D]">Kebersihan</a>
+        <a href="/video/pelayanan" class="hover:text-[#C95C0D]">Pelayanan</a>
+        <a href="/video/keamanan" class="hover:text-[#C95C0D]">Keamanan</a>
+        <a href="/video/kebersihan" class="hover:text-[#C95C0D]">Kebersihan</a>
     </div>
 </nav>
 
